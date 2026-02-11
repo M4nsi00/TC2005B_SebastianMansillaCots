@@ -4,34 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio 1</title>
+    <link href = "lab2_style.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+
+    <header class="Titulo">
     <h1>
         Laboratorio
     </h1>
-    <h2>
-        Datos:
-    </h2>
-    <p>
-        <ul>
-            <li>Sebastián Mansilla Cots</li>
-            <li>Matricula: A01712805</li>
-            <li>A01712805@tec.mx</li>
-        </ul>
-    </p>
-    <h3>
-        Sobre mi:
-    </h3>
-    <p>
-        Soy una persona curiosa y analítica, con una fuerte inclinación por la tecnología, 
-        el desarrollo de software y, en especial, la creación de videojuegos. Me gusta entender 
-        cómo funcionan las cosas a fondo y convertir ideas en proyectos concretos, sin dejar de lado mi 
-        interés por el crecimiento personal. Disfruto también del basketball y la cocina.
-    </p>
+    </header>
+
+<body>
+    <section class = "sobre_mi">
+        <aside class = "datos">
+        <h2>
+            Datos:
+        </h2>
+        <p>
+            <ul>
+                <li>Sebastián Mansilla Cots</li>
+                <li>Matricula A01712805</li>
+                <li>a01712805@tec.mx</li>
+            </ul>
+        </p>
+    </aside>
+        <aside class = "yo">
+        <h3>
+            Sobre mi:
+        </h3>
+        <p>
+            Soy una persona <strong>curiosa y analítica</strong>, con una fuerte inclinación por la tecnología, 
+            el desarrollo de software y, en especial, <strong>la creación de videojuegos</strong>. Me gusta entender 
+            cómo funcionan las cosas a fondo y convertir ideas en proyectos concretos, 
+            disfruto también del basketball y la cocina.
+        </p>
+        <img src="Perfil.jpg" alt = "perfil" id="foto_perfil">
+    </aside>
+    </section>
+        <h2>    
+            <em>Preguntas</em>
+        </h2>
+        <h1>
+            1. ¿Cuál es la diferencia entre internet y la World Wide Web?
+        </h1>
+        <p>
+            En este caso la mayor diferencia es que el internet es la infraestructura que conecta a una 
+            computadora con otra, la World Wide Web (WWW) es un servicio que recopila archivos usando la infraestructura de internet.
+        </p>
+        <h1>
+            2. ¿Cuáles son las partes de un URL?
+        </h1>
+        <p>
+            Una URL (Uniform Resource Locator) esta compuesta por:
+            <ul>
+                <li>Protocolo: (HTTPS)</li>
+                <li>Dominio: Nombre de identificación de una o varias direcciones de IP</li>
+                <li>Path: Es una especie de <em>Guía</em> de localización de lo que buscas en el server</li>
+                <li>Parámetros: Información adicional que filtra información</li>
+            </ul>
+        </p>
+        <h1>
+            3. ¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?
+        </h1>
+        <p>
+            <ul>
+                <li>GET: Método para pedir datos de una fuente específica, no modifica datos.</li>
+                <li>HEAD: Similar al método GET pero en este caso no regresa un BODY (Cuerpo del archivo), sirve para checar.</li>
+                <li>POST: Método para mandar datos al servidor, necesita un BODY.</li>
+                <li>PUT: Método que cumple la función de <em>editar</em> algo.</li>
+                <li>PATCH: Método para aplicar modificaciones parciales.</li>
+                <li>DELETE: Método para borrar</li>
+            </ul>
+        </p>
+        <h1>
+            4. ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando 
+        ingresas Uniform Resource Locator usuario y contraseña en algún sitio? ¿Por qué?
+        </h1>
+        <p>
+            En este caso se usa POST, ya que la respuesta se manda desde dentro del BODY del archivo.
+        </p>
+        <h1>
+            5. ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una 
+            página a través de un URL?
+        </h1>
+        <p>
+            Se usa el método GET, ya que, este método se usa para pedir o obtener información.
+        </p>
+        <h1>
+            6. Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? 
+            ¿Ocurrió algún error?
+        </h1>
+        <p>
+            Esto significa que el servidor web logro de forma exitosa dar respuesta al request que
+            se le hizo, en otras palabras no es un error es lo que se esperaba que respondiera.
+        </p>
+        <h1>
+            7. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta 
+            que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?
+        </h1>
+        <p>
+            Depende de la situación, este tipo de errores involucra que el servidor no encontró el sitio al que el usuario quiere entrar, 
+            podría pasar porque el usuario anotó mal el URL y por ende no existe en el servidor, en este caso no se tiene que arreglar nada, 
+            pero si esta bien anotado y sigue dando este error implica que el archivo que debería cargar no esta y eso si se tiene que resolver.
+        </p>
+        <h1>
+            8. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta 
+            que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?
+        </h1>
+        <p>
+            Si, esto es porque existe algo entre el servidor y el archivo que causó que el servidor estuviera en una situación que no sabe cómo manejar, 
+            es por esto que el desarrollador debe corregirlo porque el problema proviene de su parte.
+        </p>
+        <h1>
+            9. ¿Qué significa que un atributo HTML5 este despreciado o desaprobado (deprecated)? 
+            Menciona algunos elementos de HTML4 que en HTML5 estén desaprobados.
+        </h1>
+        <p>
+            Son aquellos atributos que en un futuro serán removidos, en otras palabras son cosas que eventualmente dejarán de tener soporte, y aunque en el momento 
+            funcionan uno no debería confiar de ellas si está desarrollando. Algunos ejemplos son: <strong> applet, basefont, big, center</strong>
+        </p>
+        <h1>
+            10. ¿Cuáles son las diferencias principales entre HTML4 y HTML5?
+        </h1>
+        <p>
+            Entre las principales diferencias esta:
+            <ul>
+                <li>Declaración del Doctype simplificado</li>
+                <li>En html4 se usan cosas como div y span, cosas que en html5 ya no son necesarias, haciendo que el código sea más fácil de leer y de entender.</li>
+                <li>En html5 se abre el apoyo a multimedia, dejando de lado la necesidad de plugins.</li>
+                <li>Se introduce canvas en html5 simplificando el uso de elementos interactivos.</li>
+                <li>En html5 salen nuevos tipos de inputs como <strong>email o date</strong></li>
+                <li>En html5 se añade mayor integración de APIs y JavaScript </li>
+            </ul>
+        </p>
+        <h1>
+            11. ¿Qué componentes de estructura y estilo tiene una tabla?
+        </h1>
+        <p>
+            Los componentes de estructura son:
+            <ul>   
+                <li>table: Contenedor principal</li>
+                <li>thead: Contenido del encabezado</li>
+                <li>tbody: Cuerpo o contenido principal</li>
+                <li>tfoot: Pie de la tabla</li>
+                <li>tr: Define una fila </li>
+                <li>th: Define un encabezado de celda</li>
+                <li>td: Celda de datos</li>
+            </ul>
+            Componentes de estilo son:
+            <ul>
+                <li>border: define las líneas divisoria entre celdas.</li>
+                <li>padding: añade espacio interno entre th y td.</li>
+                <li>text-align: alinea el texto (center,left…)</li>
+                <li>width: Ancho de la tabla </li>
+                <li>height: Alto de la tabla</li>
+            </ul>
+        </p>
+        <h1>
+            12. ¿Cuáles son los principales controles de una forma HTML5?
+        </h1>
+
+        <h1>
+            13. ¿Qué tanto soporte HTML5 tiene el navegador que utilizas?
+        </h1>
+        <p>
+            Uso Google Chrome y este tiene el mayor soporte de HTML5 según datos recientes del sitio web “Can I use”, teniendo este un total de <strong>439 puntos</strong> .
+        </p>
+        <h1>
+            14.1 ¿Cuál es el ciclo de vida de los sistemas de información?
+        </h1>
+        <p>
+            El ciclo de vida de vida de un sistema de información es el proceso que tiene desde el concepto, abarcando las siguientes fases:
+            <ul>
+                <li>Planificación</li>
+                <li>Análisis</li>
+                <li>Diseño</li>
+                <li>Implementación</li>
+                <li>Pruebas</li>
+                <li>Instalación o despliegue</li>
+                <li>Uso y mantenimiento</li>
+            </ul>
+        </p>
+        <h1>
+            14.2 ¿Cuál es el ciclo de desarrollo de sistemas de información?
+        </h1>
+
 
 </body>
 
 <footer>
     <a href="https://code.visualstudio.com/">visual studio code</a>
+    <br>
+<a href="referencias_lab1.html" target="_blank">Referencias</a>
 </footer>
 </html>
