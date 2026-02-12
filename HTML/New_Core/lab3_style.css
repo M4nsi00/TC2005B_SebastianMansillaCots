@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #689268;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+
+.sobre_mi{
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.datos, .yo {
+    background-color: #99C183;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.datos{
+    flex: 3; 
+    text-align: center;
+}
+
+.yo{
+    flex: 7; 
+}
+
+#foto_perfil{
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+p, ul{
+    font-size: large;
+}
+
+.titulo_p{
+    background-color: #689268;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.preguntas_lab{
+    border-radius: 15px;
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.pre_pt1, .pre_pt2{
+    background-color: #cdefbc;
+    padding: 20px;
+    border-radius: 15px;
+    flex:5;
+    text-align: center;
+}
+
+.pregunta, .pie_pagina{
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.pie_pagina{
+    background-color: #cdefbc;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+strong{
+    color: #272727;
+    font-size: 105%;
+}
+
+.boton{
+    text-decoration: none;
+    color: blue;
+    display: inline-block;
+}
+
+.boton:hover{
+    background-color: #90e9be;
+    transform: scale(1.03);
+    transition: 0.2s;
+}
