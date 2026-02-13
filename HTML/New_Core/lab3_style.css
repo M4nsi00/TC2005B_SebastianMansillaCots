@@ -1,3 +1,7 @@
+/*Comentario Ejemplo
+Sebastian Mansilla Cots
+*/
+
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +10,7 @@
 
 header{
     background-color: #689268;
-    max-width: 800px;
+    max-width: 900px;
     margin: 20px auto;
     text-align: center;
     padding: 20px;
@@ -53,7 +57,7 @@ p, ul{
 
 .titulo_p{
     background-color: #689268;
-    max-width: 800px;
+    max-width: 900px;
     margin: 20px auto;
     text-align: center;
     padding: 20px;
@@ -62,7 +66,7 @@ p, ul{
     border: 1px solid #ddd;
 }
 
-.preguntas_lab{
+.preguntas_lab1{
     border-radius: 15px;
     display: flex;
     gap: 20px;
@@ -77,6 +81,13 @@ p, ul{
     border-radius: 15px;
     flex:5;
     text-align: center;
+}
+
+.preguntas_lab2{
+    background-color: #cdefbc;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 15px;
 }
 
 .pregunta, .pie_pagina{
