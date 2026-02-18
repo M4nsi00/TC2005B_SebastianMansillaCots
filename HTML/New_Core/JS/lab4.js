@@ -1,106 +1,3 @@
-/*
-// consola (log, info, warn, error, assert)
-console.log("hola gamers!");
-console.info("Esto es unformación");
-console.warn("Esto es una advertencia");
-console.error("Esto es un error");
-
-//Compara valores
-console.assert(1 == true);
-
-//Compara valor y tipo de dato
-console.assert(1 === true);
-
-//-------------- variables, constantes -------------
-
-// Forma antigua de declarar variables, no se recomienda
-var videojuego_1 = "Minecraft";
-
-// Forma moderna de declarar variables:
-let videojuego_2 = "Halo";
-
-//Constantes:
-const precio = 55;
-
-
-// Alcance de las variables
-{
-    var minecraft = "5 estrellas";
-    let halo = "4 estrellas";
-}
-
-//la variable manicraft sigue viviendo fuera del ámbito en el que fue declarada
-console.log(minecraft);
-
-//la línea lanza un error porque la variable halo, murió al terminar el ámbito en el que fue declarada
-//console.log(halo);
-
-
-//---------------------------------- alert, prompt, confirm Interaccion con el cliente
-alert("Alerta");
-const favorito = prompt("Juego favorito");
-
-console.log("Tu juego favorito es " + favorito);
-
-const ganas_jugar = confirm("¿Tienes ganas de jugar?");
-
-if (ganas_jugar) {
-    console.log("¡A jugar!");
-} else {
-    console.log("¡A comer!");
-}
-
-//---------------------- funciones tradicionales
-function is_precio() {
-    return precio;
-}
-
-console.log(is_precio());
-
-//---------------------- funciones modernas
-() => {}
-
-/*() => {
-    console.log("Quedan tres vidas");
-}
-
-
-//Para ejecutar funciones anonimas
-const vidas = () => {
-    console.log("Quedan tres vidas");
-}
-
-vidas()
-
-//---------------------- arreglos
-const videojuegos = ["Zelda Ocarina of Time"];
-
-const jugadores = new Array();
-
-videojuegos.push("Mario Sunshine");
-videojuegos[10] = ("Hollow Knight");
-
-//Arreglos asociativos
-videojuegos["nintendo"] = "Mario Bros";
-
-for (let i = 0; i<videojuegos.length; i++){
-    console.log(videojuegos[i]);
-}
-
-//Recorrido alternativo
-for (let juego in videojuegos){
-    console.log(juego);
-}
-
-//---------------------- Objetos
-const object = {};
-const videojuego = {
-    nombre: "Minecraft",
-    genero: "sandbox",
-    plataforma: ["pc","nintendo","xbox","playstation","movil"],
-}
-*/
-
 const numero = prompt("Ingresa un numero");
 
 const numeros = () =>{
@@ -155,7 +52,11 @@ const contador = (lista) =>{
     console.log("Negativos: " + negativos + " Positvos: " + positivos + " Ceros: " + ceros);
 }
 
-const test = [[1, -2, 0, 4, -5],[0, 0, 0, 10, -10],[-1, -2, -3, -4, -5],[5, 15, 25, 0]];
+const test = [
+    [1, -2, 0, 4, -5],
+    [0, 0, 0, 10, -10],
+    [-1, -2, -3, -4, -5],
+    [5, 15, 25, 0]];
 
 const leerarreglos = (test) => {
     for(let i = 0; i<test.length;i++){
@@ -164,3 +65,77 @@ const leerarreglos = (test) => {
 }
 
 leerarreglos(test);
+
+const calcularPromedios = (matriz) =>{
+    for(let i = 0; i < matriz.length; i++){
+        let sumaArreglo = 0;
+        let arregloActual = matriz[i];
+
+        for(let i = 0; i < arregloActual.length; i++){
+            sumaArreglo += arregloActual[i];
+        }
+
+        let promedioArreglo = sumaArreglo/arregloActual.length;
+
+        console.log("El promedio del arreglo " + i + " es: " + promedioArreglo);
+    }
+}
+
+matrizEjercicio = [
+    [10, 10, 10],
+    [20, 50, 80],
+    [1, 2, 3, 4, 5]
+]
+
+calcularPromedios(matrizEjercicio);
+
+const bizarro = (numero) => {
+    let inverso = numero.toString()
+    .split("")
+    .reverse()
+    .join("");
+
+    console.log(inverso);
+}
+
+const bizarrin = parseInt(prompt("Ingresa un numero de al menos 5 digitos"));
+bizarro(bizarrin);
+
+//Calculadora de velocidad y distancia de un movimiento uniforme rectilineo
+class Movimiento {
+    constructor(vInicial, aceleracion, tiempo){
+        this.vInicial = parseFloat(vInicial);
+        this.aceleracion = parseFloat(aceleracion);
+        this.tiempo = parseFloat(tiempo);
+    }
+
+    //Formula para calcular velocidad:  v = v0 + at
+    calcularVelocidadInicial(){
+        return this.vInicial + (this.aceleracion*this.tiempo);
+    }
+
+    //Formula para calcular distancia: v0*t + (at^2)/2
+    calcularDistancia(){
+        return (this.vInicial * this.tiempo) + (0.5 * this.aceleracion * Math.pow(this.tiempo,2));
+    }
+
+}
+
+const calculadoraFisica = () =>{
+    alert("Bienvenido al simulador de Movimiento Rectilinieo Uniforme, añade una velocidad inicial, aceleración y tiempo para calcular velocidad y distancia")
+
+    const vi = parseFloat(prompt("Ingresa una velocidad inicial (m/s) " , "0"));
+    const a = parseFloat(prompt("Ingrese una aceleración (m/s^2) ", "9.8"));
+    const t = parseFloat(prompt("Ingrese un tiempo s " , "5"));
+
+    //Crear objeto
+    const calculo = new Movimiento(vi,a,t);
+    //Calculos
+    const vFinal = calculo.calcularVelocidadInicial();
+    const distancia = calculo.calcularDistancia();
+
+    console.log("La velocidad final del problema es de: " + vFinal);
+    console.log("La distancia final del problema es de: " + distancia);
+}
+
+calculadoraFisica()
