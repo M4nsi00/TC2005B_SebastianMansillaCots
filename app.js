@@ -1,0 +1,361 @@
+//Desde aqui no se puede entrar a un document
+console.log("hola desde node!");
+
+//Importar o cargar modulos de node
+const filesystem = require('fs');
+
+filesystem.writeFileSync('hola.txt','hola desde node!!!'); //Se usa Sync porque varias de las funciones de node se ejecutan de forma asincronicas
+
+const arreglo = [5000, 60, 90, 100, 10, 20, 10000, 0 ,120, 2000, 340, 1000, 50];
+
+setTimeout(() =>{
+    console.log("Borrando system32")},
+    15000
+);
+
+for(let item of arreglo){
+    setTimeout(() =>{
+        console.log(item);
+    }, item);
+}
+
+const html = `<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Laboratorios</title>
+    <style>
+        #foto_perfil {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffff;
+        }
+        .carousel-img-custom {
+            width: 100%;
+            height: 500px;
+            object-fit: contain;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Laboratorios</h1>
+            <p class="lead text-info uppercase tracking-widest">Respuestas de laboratorios</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <aside class="col-md-4">
+                <h2 class="h2 fw-bold pb-2 mb-3 text-info">Datos:</h2>
+                    <ul>
+                        <li><strong>Sebastián Mansilla Cots</strong> </li>
+                        <li><strong>Matricula A01712805</strong></li>
+                        <li><strong>A01712805@tec.mx</strong></li>
+                    </ul>
+            </aside>
+            <aside class="col-md-8">
+            <div class="row align-items-center">
+                <div class="col-sm-8">
+                    <h2 class="h2 fw-bold pb-2 mb-3 text-info">Sobre mi:</h2>
+                    <p>Soy una persona <strong>curiosa y analítica</strong>, con una fuerte inclinación por la tecnología, 
+                    el desarrollo de software y, en especial, <strong>la creación de videojuegos</strong>. Me gusta entender 
+                    cómo funcionan las cosas a fondo y convertir ideas en proyectos concretos, 
+                    disfruto también del basketball y la cocina.</p>
+                    <h3 class="h5 fw-bold pb-2 text-info">Habilidades</h3>
+                    <span class="badge rounded-pill text-bg-primary">GODOT</span>
+                    <span class="badge rounded-pill badge text-bg-secondary">UNITY</span>
+                    <span class="badge rounded-pill text-bg-success">C++</span>
+                    <span class="badge rounded-pill text-bg-danger">PYTHON</span>
+                </div>
+                    <div class="col-sm-4 text-center mt-3 mt-sm-0">
+                        <img src="Perfil.jpg" alt = "perfil" id="foto_perfil">
+                    </div>
+            </div>
+            </aside>
+        </div>
+        <div class="container text-center">
+            <h2 class="h2 fw-bold pb-2 mb-3 text-info">Hobbies y gustos:</h2>
+        </div>
+        <div id="carouselHobbies" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://i.pinimg.com/originals/c8/59/aa/c859aa25f28a90aeace66f7096a03e3f.jpg" class="rounded d-block carousel-img-custom" alt="a">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/86/55/9f/86559f7d16f540bbcd1a1da08e2ddd45.jpg" class="rounded d-block carousel-img-custom" alt="b">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.steamusercontent.com/ugc/633105761576935854/6AFCAF7C5F8DBB4A9B62C265108BCAED69674419/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" class="rounded d-block carousel-img-custom" alt="c">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselHobbies" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselHobbies" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+
+        <section class="mb-5">
+            <h3 class="h3 fw-bold pb-2 mb-3 text-info">Proyectos</h3>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://ggjv4.s3.us-west-1.amazonaws.com/files/styles/sidebar_full/s3/games/2026/871315/featured/Razon_3.png?VersionId=EYiWlhlx0f0eKav9mkOb3BmdNuDIUkES&itok=nNkOifOn" class="card-img-top" alt="logo">
+                        <div class="card-body">
+                            <h5 class="card-title">A Memory Of Masks</h5>
+                            <p class="card-text">A Memory of Masks is a top-down 2D puzzle-strategy game where masks define both power and identity.
+                            You explore a fractured party with mysterious guests and characters. All of the party has been cursed by the Red Mask.
+                            It's your objective to interrogate the party guests and break through their masks to reach the truth.</p>
+                            <a href="https://outer-games-studio.itch.io/a-memory-of-masks" class="btn btn-primary">Play Now!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;" aria-hidden="true">
+                        <img src="https://www.marmolesnatura.com/cdn/shop/files/cua021-2_600x.jpg?v=1684528137" class="card-img-top" alt="placeholder">
+                        <div class="card-body">
+                            <h5 class="card-title placeholder-glow">
+                            <span class="placeholder col-6"></span>
+                            </h5>
+                            <p class="card-text placeholder-glow">
+                            <span class="placeholder col-7"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-4"></span>
+                            <span class="placeholder col-6"></span>
+                            <span class="placeholder col-8"></span>
+                            </p>
+                            <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <aside><h2 class="h2 fw-bold pb-2 mb-3 text-info">Preguntas</h2></aside>
+        <div class="accordion" id="accordionPreguntas">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Laboratorio 1
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPreguntas">
+                    <div class="accordion-body">
+                        <h3>1. ¿Cuál es la diferencia entre internet y la World Wide Web?</h3>
+                        <p>En este caso la mayor diferencia es que el internet es la infraestructura que conecta a una 
+                        computadora con otra, la World Wide Web (WWW) es un servicio que recopila archivos usando la infraestructura de internet.</p>
+
+                        <h3>2. ¿Cuáles son las partes de un URL?</h3>
+                        <p>Una URL (Uniform Resource Locator) esta compuesta por:</p>
+                        <ul>
+                            <li>Protocolo: (HTTPS)</li>
+                            <li>Dominio: Nombre de identificación de una o varias direcciones de IP</li>
+                            <li>Path: Es una especie de <em>Guía</em> de localización de lo que buscas en el server</li>
+                            <li>Parámetros: Información adicional que filtra información</li>
+                        </ul>
+                        
+                        <h3>3. ¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h3>
+                        <ul>
+                            <li>GET: Método para pedir datos de una fuente específica, no modifica datos.</li>
+                            <li>HEAD: Similar al método GET pero en este caso no regresa un BODY (Cuerpo del archivo), sirve para checar.</li>
+                            <li>POST: Método para mandar datos al servidor, necesita un BODY.</li>
+                            <li>PUT: Método que cumple la función de <em>editar</em> algo.</li>
+                            <li>PATCH: Método para aplicar modificaciones parciales.</li>
+                            <li>DELETE: Método para borrar</li>
+                        </ul>
+                
+                        <h3>4. ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando 
+                        ingresas Uniform Resource Locator usuario y contraseña en algún sitio? ¿Por qué?</h3>
+                        <p>En este caso se usa POST, ya que la respuesta se manda desde dentro del BODY del archivo.</p>
+
+                        <h3>5. ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una 
+                            página a través de un URL?</h3>
+                        <p>Se usa el método GET, ya que, este método se usa para pedir o obtener información.</p>
+
+                        <h3>6. Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? 
+                            ¿Ocurrió algún error?</h3>
+                        <p>Esto significa que el servidor web logro de forma exitosa dar respuesta al request que
+                            se le hizo, en otras palabras no es un error es lo que se esperaba que respondiera.</p>
+
+                        <h3>7. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta 
+                            que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</h3>
+                        <p>No, este tipo de errores involucra que el servidor no encontró el sitio al que el usuario quiere entrar, podría pasar 
+                        porque el usuario anotó mal el URL y por ende no existe en el servidor, en este caso no se tiene que arreglar nada.</p>
+
+                        <h3>8. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta 
+                            que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</h3>
+                        <p>Si, esto es porque existe algo entre el servidor y el archivo que causó que el servidor estuviera en una situación que no sabe cómo manejar, 
+                            es por esto que el desarrollador debe corregirlo porque el problema proviene de su parte.</p>    
+                        
+                        <h3>9. ¿Qué significa que un atributo HTML5 este despreciado o desaprobado (deprecated)? 
+                            Menciona algunos elementos de HTML4 que en HTML5 estén desaprobados.</h3>
+                        <p>Son aquellos atributos que en un futuro serán removidos, en otras palabras son cosas que eventualmente dejarán de tener soporte, y aunque en el momento 
+                            funcionan uno no debería confiar de ellas si está desarrollando. Algunos ejemplos son: <strong> applet, basefont, big, center</strong></p>
+
+                        <h3>10. ¿Cuáles son las diferencias principales entre HTML4 y HTML5?</h3>
+                        <p>Entre las principales diferencias esta:</p>
+                        <ul>
+                            <li>Declaración del Doctype simplificado</li>
+                            <li>En html4 se usan cosas como div y span, cosas que en html5 ya no son necesarias, haciendo que el código sea más fácil de leer y de entender.</li>
+                            <li>En html5 se abre el apoyo a multimedia, dejando de lado la necesidad de plugins.</li>
+                            <li>Se introduce canvas en html5 simplificando el uso de elementos interactivos.</li>
+                            <li>En html5 salen nuevos tipos de inputs como <strong>email o date</strong></li>
+                            <li>En html5 se añade mayor integración de APIs y JavaScript </li>
+                        </ul>
+
+                        <h3>11. ¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+                        <p>Los componentes de estructura son:</p>
+                        <ul>   
+                            <li>table: Contenedor principal</li>
+                            <li>thead: Contenido del encabezado</li>
+                            <li>tbody: Cuerpo o contenido principal</li>
+                            <li>tfoot: Pie de la tabla</li>
+                            <li>tr: Define una fila </li>
+                            <li>th: Define un encabezado de celda</li>
+                            <li>td: Celda de datos</li>
+                        </ul>
+                        <p>Componentes de estilo son:</p>
+                        <ul>
+                            <li>border: define las líneas divisoria entre celdas.</li>
+                            <li>padding: añade espacio interno entre th y td.</li>
+                            <li>text-align: alinea el texto (center,left…)</li>
+                            <li>width: Ancho de la tabla </li>
+                            <li>height: Alto de la tabla</li>
+                        </ul>
+                        
+                        <h3>12. ¿Cuáles son los principales controles de una forma HTML5?</h3>
+                        <p>Algunos de los principales controles son:</p>
+                            <ul>
+                                <li>Input Boxes (Un elemento muy versátil que se modifica dependiendo del tipo de input que se va a usar como email, o password)</li>
+                                <li>Text Areas</li>
+                                <li>Select Boxes</li>
+                                <li>Radio Buttons</li>
+                                <li>Check Boxes</li>
+                                <li>File Uploads</li>
+                            </ul>
+                        
+                        <h3>13. ¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h3>
+                        <p>Uso Google Chrome y este tiene el mayor soporte de HTML5 según resultados de <a href="https://html5test.com/" class="boton">html5test.com</a>, teniendo este un total de <strong>526 puntos</strong>.</p>
+                        
+                        <h3>14.1 ¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+                        <p>El ciclo de vida de vida de un sistema de información es el proceso que tiene desde el concepto, abarcando las siguientes fases:</p>
+                            <ul>
+                                <li>Planificación</li>
+                                <li>Análisis</li>
+                                <li>Diseño</li>
+                                <li>Implementación</li>
+                                <li>Pruebas</li>
+                                <li>Instalación o despliegue</li>
+                                <li>Uso y mantenimiento</li>
+                            </ul>
+                        
+                        <h3>14.2 ¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+                        <p>El ciclo de desarrollo de sistemas de información involucra a las fases dentro del ciclo de vida que tienen enfoque en desarrollar el sistema, mientras que el ciclo 
+                        de vida va desde la idea hasta el sistema se deja de usar, el enfoque de este ciclo está en transformar requisitos en un producto funciona.</p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Laboratorio 3
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#accordionPreguntas">
+                    <div class="accordion-body">
+                        <h3>1. Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?</h3>
+                        <p>Primero es importante entender que al usar !important en un archivo CSS estás dándole prioridad sobre cualquier jerarquía que hay dentro del documento, por lo que solo 
+                        lo usaría en casos donde el cambio visual que se quiere hacer se quiere respetar a toda costa.</p>
+                        
+
+                        
+                        <h3>2. Si se pone una imagen de fondo en una página HTML, ¿por qué debes elegir con cuidado?</h3>
+                        <p>Principalmente porque puede llegar a causar que la información que tiene encima se pierda o sea muy difícil de leer, necesitando hacer que el color en el texto necesite 
+                        contrastar mucho para que se vea lo que puede llegar a hacer que sea cansado de ver.</p>
+                        
+
+                        
+                        <h3>3. Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de una propiedad de estilo entre %,px y pt?</h3>
+                        <p>Recomiendo usar cosas como el % principalmente porque esta unidad es una unidad relativa, de forma que si el sitio web se acorta o se pone en móvil con una densidad distinta 
+                        de pixeles, al ponerlo en relativo el sitio respeta tamaños, mientras que si se usa px o pt estos valores son fijos entonces no se moverán de forma correcta en móvil.</p>
+                        
+
+                        
+                        <h3>4. ¿Por qué el uso de una forma minimizada del CSS mejora el rendimiento del sitio?</h3> 
+                        <p>Porque hace que el sitio web cargue de forma más rápida, que en la mayoría de casos no es gran problema, pero en sistemas donde el tiempo de respuesta tiene que ser lo más veloz posible, 
+                        es muy importante tenerlo en cuenta.</p>
+                    </div>
+                </div>
+            </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Laboratorio 4
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionPreguntas">
+                    <div class="accordion-body">
+                        <h3>Presiona el boton y descubre algo <strong>M-A-G-I-C-O</strong></h3>
+                        <a href="lab4.html"><button type="button" class="btn btn-primary">. . . . .</button></a>
+                </div>
+            </div>
+                <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                        Laboratorio 5
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionPreguntas">
+                    <div class="accordion-body">
+                        <h3>1. ¿Qué es Material Design?</h3>
+                        <p>Material Design es un sistema de diseño de interfaces de usuario desarrollado con Google. Es usado por muchos diseñadores de UX, principalmente por su flexibilidad y equilibrio entre usabilidad y riqueza visual 
+                        teniendo siempre en mente la responsibidad, consitencia e intuitividad que debe llevar el sistema. 
+                        <br>Algo muy característico también del sistema es su concepto de uso de metáforas físicas para modificar el comportamiento 
+                        de los objetos, las tarjetas se sienten como <strong>papel</strong>, las sombras crean <strong>jerarquía</strong> y los objetos no desaparecen, sino que se <strong>transforman</strong>.
+                        <br>Este modelo lleva ya <strong>4</strong> generaciones teniendo cada vez más un enfoque en la expresión individual y la sensación de libertad y originalidad.
+                        </p>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    <footer>
+        <p>Se utilizo el editor Visual Studio Code para hacer el laboratorio</p>
+        <div class="btn-group" role="group" aria-label="Referencias">
+            <a href="https://code.visualstudio.com/"><button type="button" class="btn btn-primary">visual studio code</button></a>
+            <br>
+            <a href="referencias_labs.html"><button type="button" class="btn btn-primary">Referencias</button></a>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/HTML/New_Core/Lab 0-7/JS/comportamiento.js"></script>
+    
+</body>
+</html>`
+
+//Como manejar server
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+//    console.log(request);
+    console.log(request.url);
+//    console.log(respuesta);
+    response.setHeader('Content-type', 'text/html');
+    response.write(html);
+    response.end();
+})
+
+server.listen(3000);
