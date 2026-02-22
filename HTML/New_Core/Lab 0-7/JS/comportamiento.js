@@ -1,4 +1,4 @@
-const perfil = document.getElementById("foto_perfil");
+/* const perfil = document.getElementById("foto_perfil");
 
 console.log(perfil);
 
@@ -8,3 +8,4 @@ perfil.onclick = () =>{
     <p class='is-size-3'>Que mira bobo</p>
     `;
 }
+*/

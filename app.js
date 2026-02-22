@@ -19,6 +19,17 @@ for(let item of arreglo){
     }, item);
 }
 
+const promedios = ((lista) =>{
+    let sumaArreglo = 0;
+    for(let i = 0; i< lista.length; i++){
+        sumaArreglo += lista[i];
+    }
+    let promedioArreglo = sumaArreglo/lista.length;
+    console.log("El promedio del arreglo: " + lista + " es de: " + promedioArreglo);
+});
+
+promedios(arreglo);
+
 const html = `<!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
