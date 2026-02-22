@@ -1,4 +1,5 @@
 //Desde aqui no se puede entrar a un document
+/*
 console.log("hola desde node!");
 
 //Importar o cargar modulos de node
@@ -6,7 +7,7 @@ const filesystem = require('fs');
 
 filesystem.writeFileSync('hola.txt','hola desde node!!!'); //Se usa Sync porque varias de las funciones de node se ejecutan de forma asincronicas
 
-const arreglo = [5000, 60, 90, 100, 10, 20, 10000, 0 ,120, 2000, 340, 1000, 50];
+
 
 setTimeout(() =>{
     console.log("Borrando system32")},
@@ -18,6 +19,10 @@ for(let item of arreglo){
         console.log(item);
     }, item);
 }
+*/
+
+//Funcion sacar promedios de un arreglo
+const arreglo = [5000, 60, 90, 100, 10, 20, 10000, 0 ,120, 2000, 340, 1000, 50];
 
 const promedios = ((lista) =>{
     let sumaArreglo = 0;
@@ -30,7 +35,80 @@ const promedios = ((lista) =>{
 
 promedios(arreglo);
 
-const html = `<!DOCTYPE html>
+//Convertir un string a un archivo de texto
+
+const filesystem = require('fs');
+
+const texto = `
+Cuando el agua hirviendo no queme más
+Y seas esclavo de tu historial
+Cuando te sinceres con esas lágrimas mal tiradas
+Cuando suene raro escuchar un sí
+Y pidas al tiempo volver atrás
+Cuando veas las páginas no leídas que están pasadas
+
+Cuando veas lo tonto que fuiste ayer
+Y lo equivocado que aún estás
+Fuiste tan feliz que no comprendiste que no es por siempre
+Solo estás y solo aprendiste a estar
+Por vivir con miedo a volver a amar
+Ojalá te quieran como quisiste
+
+Tres golpes, tres golpes, tres golpes no más
+Y al son de la Villa Nueva, tres golpes no más
+Tres golpes, tres golpes, tres golpes no más
+Y al son de la Villa Nueva, tres golpes no más
+`;
+
+filesystem.writeFileSync('cuando_el_agua_hirviendo.txt', texto);
+
+
+//Sub_laboratorio manejo de matrizes (Sacado de un laboratorio de python previo)
+const generador_matriz = ((tamano) =>{
+    const matriz = [];
+    for (let i = 0; i < tamano; i++){
+        let lista = []
+        for(let j = 0; j < tamano; j++){
+            lista[j] = Math.floor(Math.random() * 100);
+            
+        }
+        matriz[i] = lista;
+    }
+    console.log(matriz);
+    return matriz;
+});
+
+matriz = generador_matriz(5);
+
+//Dentro del laboratorio se implementan varias funciones sobre matrizes, aqui implementare dos nada más, una funcion que recibe una matriz, una columna de la matriz y los multiplica
+//por un numero que tambien recibe y otra que recibe la matriz y regresa el numero más grande dentro.
+
+const multiplica_columnas = ((matriz,columna,numero) =>{
+    for(let i = 0; i < matriz.length; i++){
+        matriz[i][columna] *= numero;
+    }
+    console.log("La columna " + columna + " multiplicada por " + numero + " es igual a: ");
+    console.log(matriz);
+})
+
+multiplica_columnas(matriz,Math.floor(Math.random() * 4),Math.floor(Math.random() * 5));
+
+const numero_max = ((matriz) => {
+    let mayor = matriz[0][0];
+    for (let i = 0; i < matriz.length; i++){
+        for (let j = 0; j < matriz[i].length;j++){
+            if (matriz[i][j] > mayor){
+                mayor = matriz[i][j];
+            }
+        }
+    }
+    console.log("El número mayor de la matriz es: " + mayor);
+});
+
+numero_max(matriz);
+
+const html = `
+<!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -352,13 +430,13 @@ const html = `<!DOCTYPE html>
     </div>
 </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/HTML/New_Core/Lab 0-7/JS/comportamiento.js"></script>
     
 </body>
 </html>`
 
 //Como manejar server
 const http = require('http');
+const { text } = require('stream/consumers');
 
 const server = http.createServer((request, response) => {
 //    console.log(request);
