@@ -107,6 +107,8 @@ const numero_max = ((matriz) => {
 
 numero_max(matriz);
 
+const http = require('http');
+
 const html = `
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
@@ -166,7 +168,7 @@ const html = `
                     <span class="badge rounded-pill text-bg-danger">PYTHON</span>
                 </div>
                     <div class="col-sm-4 text-center mt-3 mt-sm-0">
-                        <img src="Perfil.jpg" alt = "perfil" id="foto_perfil">
+                        <img src="/HTML/New_Core/Lab 0-7/HTML/Perfil.jpg" alt = "perfil" id="foto_perfil">
                     </div>
             </div>
             </aside>
@@ -434,8 +436,9 @@ const html = `
 </body>
 </html>`
 
+
 //Como manejar server
-const http = require('http');
+
 const { text } = require('stream/consumers');
 
 const server = http.createServer((request, response) => {
