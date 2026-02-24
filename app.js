@@ -1,115 +1,6 @@
-//Desde aqui no se puede entrar a un document
-/*
-console.log("hola desde node!");
-
-//Importar o cargar modulos de node
-const filesystem = require('fs');
-
-filesystem.writeFileSync('hola.txt','hola desde node!!!'); //Se usa Sync porque varias de las funciones de node se ejecutan de forma asincronicas
-
-
-
-setTimeout(() =>{
-    console.log("Borrando system32")},
-    15000
-);
-
-for(let item of arreglo){
-    setTimeout(() =>{
-        console.log(item);
-    }, item);
-}
-*/
-
-//Funcion sacar promedios de un arreglo
-const arreglo = [5000, 60, 90, 100, 10, 20, 10000, 0 ,120, 2000, 340, 1000, 50];
-
-const promedios = ((lista) =>{
-    let sumaArreglo = 0;
-    for(let i = 0; i< lista.length; i++){
-        sumaArreglo += lista[i];
-    }
-    let promedioArreglo = sumaArreglo/lista.length;
-    console.log("El promedio del arreglo: " + lista + " es de: " + promedioArreglo);
-});
-
-promedios(arreglo);
-
-//Convertir un string a un archivo de texto
-
-const filesystem = require('fs');
-
-const texto = `
-Cuando el agua hirviendo no queme más
-Y seas esclavo de tu historial
-Cuando te sinceres con esas lágrimas mal tiradas
-Cuando suene raro escuchar un sí
-Y pidas al tiempo volver atrás
-Cuando veas las páginas no leídas que están pasadas
-
-Cuando veas lo tonto que fuiste ayer
-Y lo equivocado que aún estás
-Fuiste tan feliz que no comprendiste que no es por siempre
-Solo estás y solo aprendiste a estar
-Por vivir con miedo a volver a amar
-Ojalá te quieran como quisiste
-
-Tres golpes, tres golpes, tres golpes no más
-Y al son de la Villa Nueva, tres golpes no más
-Tres golpes, tres golpes, tres golpes no más
-Y al son de la Villa Nueva, tres golpes no más
-`;
-
-filesystem.writeFileSync('cuando_el_agua_hirviendo.txt', texto);
-
-
-//Sub_laboratorio manejo de matrizes (Sacado de un laboratorio de python previo)
-const generador_matriz = ((tamano) =>{
-    const matriz = [];
-    for (let i = 0; i < tamano; i++){
-        let lista = []
-        for(let j = 0; j < tamano; j++){
-            lista[j] = Math.floor(Math.random() * 100);
-            
-        }
-        matriz[i] = lista;
-    }
-    console.log(matriz);
-    return matriz;
-});
-
-matriz = generador_matriz(5);
-
-//Dentro del laboratorio se implementan varias funciones sobre matrizes, aqui implementare dos nada más, una funcion que recibe una matriz, una columna de la matriz y los multiplica
-//por un numero que tambien recibe y otra que recibe la matriz y regresa el numero más grande dentro.
-
-const multiplica_columnas = ((matriz,columna,numero) =>{
-    for(let i = 0; i < matriz.length; i++){
-        matriz[i][columna] *= numero;
-    }
-    console.log("La columna " + columna + " multiplicada por " + numero + " es igual a: ");
-    console.log(matriz);
-})
-
-multiplica_columnas(matriz,Math.floor(Math.random() * 4),Math.floor(Math.random() * 5));
-
-const numero_max = ((matriz) => {
-    let mayor = matriz[0][0];
-    for (let i = 0; i < matriz.length; i++){
-        for (let j = 0; j < matriz[i].length;j++){
-            if (matriz[i][j] > mayor){
-                mayor = matriz[i][j];
-            }
-        }
-    }
-    console.log("El número mayor de la matriz es: " + mayor);
-});
-
-numero_max(matriz);
-
 const http = require('http');
 
-const html = `
+const html_head = `
 <!DOCTYPE html>
 <html lang="es" data-bs-theme="dark">
 <head>
@@ -134,7 +25,9 @@ const html = `
         }
     </style>
 </head>
+`
 
+const html_body = `
 <body>
     <header class="py-5 border-bottom mb-5">
         <div class="container">
@@ -422,6 +315,8 @@ const html = `
                 </div>
             </div>    
         </div>
+`
+const html_footer = `
     <footer>
         <p>Se utilizo el editor Visual Studio Code para hacer el laboratorio</p>
         <div class="btn-group" role="group" aria-label="Referencias">
@@ -436,18 +331,71 @@ const html = `
 </body>
 </html>`
 
+const htlm_form = 
+`<form>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class = "card shadow p-4">
+                    <h2 id="welcomeHeading" class="text-primary mb-4 text-center"></h2>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Nombre:</label>
+                            <input type="text" id="username-input" class="form-control form-control-lg" placeholder="Ej. Sebastian">
+                        </div>
+                </div>
+                <hr>
+                <div class = "mb-3">
+                    <label for="pw1" class="form-label">Contraseña</label>
+                    <input type="password" id="pw1" class="form-label" placeholder="********">
+                    <i class="bi bi-eye-slash"input type="button" name="wf" id="pw1icon" onclick="mostrarPW1()"></i>
+                </div>
+                <div class = "mb-3">
+                    <label for="pw2" class="form-label">Verificar Contraseña</label>
+                    <input type="password" id="pw2" class="form-label" placeholder="Repite tu clave">
+                    <i class="bi bi-eye-slash" input type="button" name="wf" id="pw2icon" onclick="mostrarPW2()"></i>
+                </div>
+                <div id="matchMessage" class="form-text"></div>
+                <div class="mt-4">
+                    <button id="btnSubir"  class="btn btn-primary w-100 btn-lg">Confirmar y Validar</button>
+                    <p id="errorMessage" class="text-danger text-center mt-2" style="display: none;">Las contraseñas deben coincidir para continuar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+`
+
 
 //Como manejar server
 
-const { text } = require('stream/consumers');
+const server = http.createServer( (request, response) => {
 
-const server = http.createServer((request, response) => {
-//    console.log(request);
-    console.log(request.url);
-//    console.log(respuesta);
-    response.setHeader('Content-type', 'text/html');
-    response.write(html);
-    response.end();
-})
+    if (request.url == "/") {
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html_head + html_body+ html_footer);
+        response.end();
+    } else if (request.url == "/new" && request.method == "GET") {
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html_head + htlm_form + html_footer);
+        response.end();
+    } else if (request.url == "/new" && request.method == "POST"){
+        
+        response.end();
+    } else {
+        response.setHeader('Content-Type', 'text/html');
+        response.write(html_head + "404" + html_footer );
+        response.end();
+    }
+    
+    // request.on('data', (data) => {
+    //   console.log(data);
+    //   datos_completos.push(data);
+    // });
+
+    // request.on('end', () => {
+    //     const string_datos_completos = Buffer.concat(datos_completos).toString();
+    //     console.log(string_datos_completos);
+    // });
+});
 
 server.listen(3000);
