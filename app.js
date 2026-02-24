@@ -1,4 +1,9 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 
 const html_head = `
 <!DOCTYPE html>
@@ -365,37 +370,16 @@ const htlm_form =
 </form>
 `
 
-
 //Como manejar server
-
-const server = http.createServer( (request, response) => {
-
-    if (request.url == "/") {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_head + html_body+ html_footer);
-        response.end();
-    } else if (request.url == "/new" && request.method == "GET") {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_head + htlm_form + html_footer);
-        response.end();
-    } else if (request.url == "/new" && request.method == "POST"){
-        
-        response.end();
-    } else {
-        response.setHeader('Content-Type', 'text/html');
-        response.write(html_head + "404" + html_footer );
-        response.end();
-    }
-    
-    // request.on('data', (data) => {
-    //   console.log(data);
-    //   datos_completos.push(data);
-    // });
-
-    // request.on('end', () => {
-    //     const string_datos_completos = Buffer.concat(datos_completos).toString();
-    //     console.log(string_datos_completos);
-    // });
+//Middleware
+app.use((request, response, next) => {
+    console.log('Middleware!');
+    next(); //Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-server.listen(3000);
+app.use((request, response, next) => {
+    console.log('Otro middleware!');
+    response.send('¡Hola mundo!'); //Manda la respuesta
+});
+
+app.listen(3000);
