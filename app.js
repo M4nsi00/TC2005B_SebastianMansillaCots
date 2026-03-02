@@ -331,39 +331,37 @@ const html_footer = `
 </body>
 </html>`
 
-const htlm_form = 
-`<form>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
-                <div class = "card shadow p-4">
-                    <h2 id="welcomeHeading" class="text-primary mb-4 text-center"></h2>
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Nombre:</label>
-                            <input type="text" id="username-input" class="form-control form-control-lg" placeholder="Ej. Sebastian">
-                        </div>
-                </div>
-                <hr>
-                <div class = "mb-3">
-                    <label for="pw1" class="form-label">Contraseña</label>
-                    <input type="password" id="pw1" class="form-label" placeholder="********">
-                    <i class="bi bi-eye-slash"input type="button" name="wf" id="pw1icon" onclick="mostrarPW1()"></i>
-                </div>
-                <div class = "mb-3">
-                    <label for="pw2" class="form-label">Verificar Contraseña</label>
-                    <input type="password" id="pw2" class="form-label" placeholder="Repite tu clave">
-                    <i class="bi bi-eye-slash" input type="button" name="wf" id="pw2icon" onclick="mostrarPW2()"></i>
-                </div>
-                <div id="matchMessage" class="form-text"></div>
-                <div class="mt-4">
-                    <button id="btnSubir"  class="btn btn-primary w-100 btn-lg">Confirmar y Validar</button>
-                    <p id="errorMessage" class="text-danger text-center mt-2" style="display: none;">Las contraseñas deben coincidir para continuar.</p>
-                </div>
+const htlm_form = `
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 card shadow p-4">
+        <h2 class="text-primary mb-4 text-center">Registrar Nuevo Usuario</h2>
+        <form action="/new" method="POST">
+            <div class="mb-3">
+            <label class="form-label fw-bold">Nombre Completo</label>
+            <input name="nombre" type="text" class="form-control" placeholder="Ej. Sebastian" required>
             </div>
+            <div class="mb-3">
+            <label class="form-label fw-bold">ID de Usuario</label>
+            <input name="id_usuario" type="number" class="form-control" placeholder="Ej. 12345" required>
+            </div>
+            <div class="mb-3">
+            <label class="form-label fw-bold">Fecha de Registro</label>
+            <input name="fecha" type="date" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Guardar en Base de Datos</button>
+        </form>
         </div>
     </div>
-</form>
-`
+</div>
+`;
+
+const usuarios = [
+    { 
+        nombre: "Sebastian", 
+        id_usuario: "001", 
+        fecha: "01-03-2026" }
+];
 
 
 //Como manejar server
@@ -372,14 +370,59 @@ const server = http.createServer( (request, response) => {
 
     if (request.url == "/") {
         response.setHeader('Content-Type', 'text/html');
-        response.write(html_head + html_body+ html_footer);
+        let html_index = `
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="h2">Recuadro de Nuevos Usuarios</h1>
+                <a href="/new" class="btn btn-success">+ Nuevo Registro</a>
+            </div>
+            <div class="row g-4">`;
+
+            for (let u of usuarios) {
+            html_index += `
+                <div class="col-md-4">
+                    <div class="card h-100 border-primary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">ID: ${u.id_usuario}</h5>
+                            <p class="card-text"><strong>Usuario:</strong> ${u.nombre}</p>
+                        </div>
+                        <div class="card-footer text-muted small">
+                            Registrado el: ${u.fecha}
+                        </div>
+                    </div>
+                </div>`;
+        }
+
+        html_index += `</div></div>`;
+        
+        response.write(html_head + html_index+ html_footer);
         response.end();
     } else if (request.url == "/new" && request.method == "GET") {
         response.setHeader('Content-Type', 'text/html');
         response.write(html_head + htlm_form + html_footer);
         response.end();
     } else if (request.url == "/new" && request.method == "POST"){
-        
+
+        const datos_completos = [];
+        request.on('data', (data) => {
+        console.log(data);
+        datos_completos.push(data);
+        });
+
+        request.on('end', () =>{
+            const string_datos_completos = Buffer.concat(datos_completos).toString();
+            console.log(string_datos_completos);
+            const nombre = string_datos_completos.split("&")[0].split("=")[1];
+            const id_usuario = string_datos_completos.split("&")[1].split("=")[1];
+            const fecha = string_datos_completos.split("&")[2].split("=")[1];
+
+            const nuevo_usuario = {
+                nombre: nombre,
+                id_usuario: id_usuario,
+                fecha: fecha
+            };
+            usuarios.push(nuevo_usuario);
+        });
         response.end();
     } else {
         response.setHeader('Content-Type', 'text/html');
