@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio 6 Preguntas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Laboratorio 6</h1>
+            <p class="lead text-info uppercase tracking-widest">Respuestas de laboratorio 6</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h3>1. ¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h3>
+            <p>Esto sirve para buscar asegurar que del lado del cliente todos los datos que mande del formulario sean correctos, por ejemplo, que si ingresa una edad
+                sea un dato númerico o que su correo cumpla cierta forma.
+                <br>Otro motivo tiene que ver con que si se verifica del lado del client y se encuentra algún error, la modificación necesaria se puede hacer de forma inmediata.
+                Mientras que si se manda al servidor de forma incorrecta se tarda más tiempo en hacer las modificaciones necesarias.
+            </p>
+
+        <h3>2. ¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h3>
+            <p>En este caso es tan sencillo como entrar en la consola del navegador e ir a la etiqueta <em>form</em> que tiene la validación y poner <strong>no validate</strong>, con esto ya se puede sobrepasar esta 
+            validación que se genera desde el cliente.</p>
+
+        <h3>3. Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?</h3>
+            <p>Va muy de la mano con lo comentado en la primer pregunta, si ya hay una validacion en la parte del cliente, hace que todo el proceso sea mejor para el cliente, si el cliente no tiene malas intenciones con
+                el sistema, esta validación instantanea es perfecta, junto a esto al validarlo aqui permite que el servidor no este constantemente validando si lo que recibe esta bien o mal, aunque también es necesario tener
+                cierta validación por parte del servidor por temas de seguridad.
+            </p>
+    </div>
+</body>
+</html>

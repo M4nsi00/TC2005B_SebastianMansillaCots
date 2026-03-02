@@ -1,0 +1,21 @@
+<%- include('includes/_header') %>
+<%- include('includes/_footer') %>
+<a href="/videojuegos/new"><button class="button is-primary">Nuevo videojuego</button></a>
+                <div class="columns">
+
+        <% for (let juego of videojuegos) { %>
+                <div class="column">
+                    <%= juego.nombre %>
+                    <figure class="image">
+                        <img class="is-rounded" src="<%= juego.imagen %>" />
+                    </figure>
+                    <p>
+                        <%= juego.review %>
+                    </p>
+                    <p>
+                        <%= juego.calificacion %>
+                    </p>
+                </div>
+        <% } %>
+                </div>
+            
