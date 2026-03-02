@@ -63,7 +63,7 @@ function mostrarPW2(){
 //Redirigir al validar contraseña
 btnSubir.addEventListener('click', () => {
     if(pw1.value===pw2.value && pw1.value !== ""){
-        window.location.href = "/HTML/New_Core/Lab 0-7/HTML/preguntasLab6.html";
+        window.location.href = "lab6_preguntas";
     } else {
         document.getElementById('errorMessage').style.display = "block";
     }

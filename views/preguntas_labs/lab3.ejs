@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Laboratorios</title>
+</head>
+
+<body>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Index</h1>
+            <p class="lead text-info uppercase tracking-widest">Indice de laboratorios</p>
+        </div>
+    </header>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold">Laboratorio 3</h1>
+                <p class="lead text-muted">CSS y Buenas Prácticas de Ingeniería</p>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <article class="content">
+                <section class="mb-5 shadow-sm p-4 rounded border-start border-4 border-primary">
+                    <h3 class="h4 text-primary">1. ¿Cuál es tu recomendación sobre el uso de !important en CSS?</h3>
+                    <p>Al usar <code>!important</code> estás rompiendo la jerarquía natural del documento. Mi recomendación es usarlo <strong>únicamente como último recurso</strong>, especialmente en cambios visuales que deben respetarse a toda costa y no pueden resolverse mediante especificidad de selectores.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">2. Elección de imágenes de fondo</h3>
+                    <p>Debes elegir con cuidado porque una imagen muy cargada puede causar que la información pierda legibilidad. Es vital asegurar un <strong>contraste alto</strong> entre el texto y el fondo para evitar fatiga visual en el usuario.</p>
+                </section>
+
+                <section class="mb-5 shadow-sm p-4 rounded border-start border-4 border-info">
+                    <h3 class="h4 text-info">3. ¿%, px o pt? Recomendación de unidades</h3>
+                    <p>Recomiendo priorizar unidades relativas como el <strong>%</strong> (o también <em>em/rem</em>). Esto permite que el sitio sea <strong>responsivo</strong> y respete los tamaños en dispositivos móviles con distintas densidades de píxeles, a diferencia de <em>px</em> o <em>pt</em> que son valores fijos.</p>
+                </section>
+                
+                
+
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">4. ¿Por qué el CSS minimizado mejora el rendimiento?</h3>
+                    <p>Reduce el peso del archivo, lo que acelera la carga del sitio. En sistemas críticos donde el <strong>tiempo de respuesta</strong> es clave, cada kilobyte ahorrado cuenta para una mejor experiencia de usuario.</p>
+                </section>
+            </article>
+
+            <div class="text-center mt-6 pt-5 mb-5">
+                <h1 class="display-4 fw-bold">Laboratorio 4</h1>
+                <p class="lead text-muted">Interactividad</p>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <div class="card text-center border-primary shadow mb-5">
+                <div class="card-body py-5">
+                    <h3 class="card-title mb-4">Presiona el botón y descubre algo <span class="text-primary fw-bold">M-A-G-I-C-O</span></h3>
+                    <a href="lab4.html" class="btn btn-primary btn-lg px-5 shadow-sm">
+                        . . . . .
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="index.html" class="btn btn-outline-secondary">
+                    Volver al Panel Principal
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>

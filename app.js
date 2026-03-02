@@ -1,20 +1,24 @@
 const express = require('express');
-const app = express();
-
 const path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
+const bodyParser = require('body-parser');
+
+const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-const rutasVideojuegos = require('./routes/videojuegos.route');
-app.use('/videojuegos', rutasVideojuegos);
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const rutasIndex = require('./routes/index_main.route');
+app.use('/', rutasIndex);
+
+const rutasLabs = require('./routes/labs.route');
+app.use('/labs', rutasLabs);
 
 app.use((request, response, next) =>{
-  response.status(404).send("El videojuego no fue encontrado");
+  response.status(404).send("Laboratorio no encontrado");
 })
 
 app.listen(3000);

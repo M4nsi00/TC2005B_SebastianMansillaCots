@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Laboratorios</title>
+</head>
+
+<body>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Index</h1>
+            <p class="lead text-info uppercase tracking-widest">Indice de laboratorios</p>
+        </div>
+    </header>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold">Laboratorio 1</h1>
+                <p class="lead text-muted">Introducción a la Web y Protocolos</p>
+                <hr class="w-25 mx-auto">
+            </div>
+
+            <article class="content">
+                
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">1. ¿Cuál es la diferencia entre internet y la World Wide Web?</h3>
+                    <p>En este caso la mayor diferencia es que el internet es la infraestructura que conecta a una computadora con otra, la World Wide Web (WWW) es un servicio que recopila archivos usando la infraestructura de internet.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">2. ¿Cuáles son las partes de un URL?</h3>
+                    <p>Una URL (Uniform Resource Locator) esta compuesta por:</p>
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item"><strong>Protocolo:</strong> (HTTPS)</li>
+                        <li class="list-group-item"><strong>Dominio:</strong> Nombre de identificación de una o varias direcciones de IP</li>
+                        <li class="list-group-item"><strong>Path:</strong> Es una especie de <em>Guía</em> de localización de lo que buscas en el server</li>
+                        <li class="list-group-item"><strong>Parámetros:</strong> Información adicional que filtra información</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">3. ¿Cuál es el propósito de los métodos HTTP?</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Método</th>
+                                    <th>Propósito</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>GET</strong></td><td>Pedir datos, no modifica nada.</td></tr>
+                                <tr><td><strong>HEAD</strong></td><td>Similar a GET pero sin el cuerpo del archivo.</td></tr>
+                                <tr><td><strong>POST</strong></td><td>Mandar datos al servidor (necesita cuerpo).</td></tr>
+                                <tr><td><strong>PUT</strong></td><td>Editar o reemplazar un recurso.</td></tr>
+                                <tr><td><strong>PATCH</strong></td><td>Modificaciones parciales.</td></tr>
+                                <tr><td><strong>DELETE</strong></td><td>Borrar un recurso.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">4. ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando 
+                        ingresas Uniform Resource Locator usuario y contraseña en algún sitio? ¿Por qué?</h3>
+                        <p>En este caso se usa POST, ya que la respuesta se manda desde dentro del BODY del archivo.</p>
+
+                        <h3 class="h4 text-primary">5. ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una 
+                            página a través de un URL?</h3>
+                        <p>Se usa el método GET, ya que, este método se usa para pedir o obtener información.</p>
+
+                    <h3 class="h4 text-primary">6. Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto?</h3>
+                    <div class="alert alert-success">
+                        Significa que el servidor web logró de forma exitosa dar respuesta al request. No es un error, es el resultado esperado.
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="h4 text-primary">9. ¿Qué significa que un atributo HTML5 esté "deprecated"?</h3>
+                    <p>Son aquellos atributos que en un futuro serán removidos y dejarán de tener soporte. Ejemplos: <code class="bg-light p-1">applet, basefont, big, center</code>.</p>
+                </section>
+
+                <h3 class="h4 text-primary">10. ¿Cuáles son las diferencias principales entre HTML4 y HTML5?</h3>
+                        <p>Entre las principales diferencias esta:</p>
+                        <ul>
+                            <li>Declaración del Doctype simplificado</li>
+                            <li>En html4 se usan cosas como div y span, cosas que en html5 ya no son necesarias, haciendo que el código sea más fácil de leer y de entender.</li>
+                            <li>En html5 se abre el apoyo a multimedia, dejando de lado la necesidad de plugins.</li>
+                            <li>Se introduce canvas en html5 simplificando el uso de elementos interactivos.</li>
+                            <li>En html5 salen nuevos tipos de inputs como <strong>email o date</strong></li>
+                            <li>En html5 se añade mayor integración de APIs y JavaScript </li>
+                        </ul>
+
+                        <h3 class="h4 text-primary">11. ¿Qué componentes de estructura y estilo tiene una tabla?</h3>
+                        <p>Los componentes de estructura son:</p>
+                        <ul>   
+                            <li>table: Contenedor principal</li>
+                            <li>thead: Contenido del encabezado</li>
+                            <li>tbody: Cuerpo o contenido principal</li>
+                            <li>tfoot: Pie de la tabla</li>
+                            <li>tr: Define una fila </li>
+                            <li>th: Define un encabezado de celda</li>
+                            <li>td: Celda de datos</li>
+                        </ul>
+                        <p>Componentes de estilo son:</p>
+                        <ul>
+                            <li>border: define las líneas divisoria entre celdas.</li>
+                            <li>padding: añade espacio interno entre th y td.</li>
+                            <li>text-align: alinea el texto (center,left…)</li>
+                            <li>width: Ancho de la tabla </li>
+                            <li>height: Alto de la tabla</li>
+                        </ul>
+                        
+                        <h3 class="h4 text-primary">12. ¿Cuáles son los principales controles de una forma HTML5?</h3>
+                        <p>Algunos de los principales controles son:</p>
+                            <ul>
+                                <li>Input Boxes (Un elemento muy versátil que se modifica dependiendo del tipo de input que se va a usar como email, o password)</li>
+                                <li>Text Areas</li>
+                                <li>Select Boxes</li>
+                                <li>Radio Buttons</li>
+                                <li>Check Boxes</li>
+                                <li>File Uploads</li>
+                            </ul>
+                        
+                        <h3 class="h4 text-primary">13. ¿Qué tanto soporte HTML5 tiene el navegador que utilizas?</h3>
+                        <p>Uso Google Chrome y este tiene el mayor soporte de HTML5 según resultados de <a href="https://html5test.com/" class="boton">html5test.com</a>, teniendo este un total de <strong>526 puntos</strong>.</p>
+                        
+                        <h3 class="h4 text-primary">14.1 ¿Cuál es el ciclo de vida de los sistemas de información?</h3>
+                        <p>El ciclo de vida de vida de un sistema de información es el proceso que tiene desde el concepto, abarcando las siguientes fases:</p>
+                            <ul>
+                                <li>Planificación</li>
+                                <li>Análisis</li>
+                                <li>Diseño</li>
+                                <li>Implementación</li>
+                                <li>Pruebas</li>
+                                <li>Instalación o despliegue</li>
+                                <li>Uso y mantenimiento</li>
+                            </ul>
+                        
+                        <h3 class="h4 text-primary">14.2 ¿Cuál es el ciclo de desarrollo de sistemas de información?</h3>
+                        <p>El ciclo de desarrollo de sistemas de información involucra a las fases dentro del ciclo de vida que tienen enfoque en desarrollar el sistema, mientras que el ciclo 
+                        de vida va desde la idea hasta el sistema se deja de usar, el enfoque de este ciclo está en transformar requisitos en un producto funciona.</p>
+                    </div>
+            </article>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
