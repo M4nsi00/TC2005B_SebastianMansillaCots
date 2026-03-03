@@ -4,13 +4,14 @@
                     <div class="card h-100 border-primary shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title text-primary"> ID: <%= u.id_usuario%></h5>
-                            <p class="card-text"><strong>Usuario:</strong> <%u.nombre%></p>
+                            <p class="card-text"><strong>Usuario:</strong> <%= u.nombre%></p>
                         </div>
                         <div class="card-footer text-muted small">
-                            Registrado el: <%u.fecha%>
+                            Registrado el: <%= u.fecha%>
                         </div>
                     </div>
                 </div>
             <% } %>
         </div>
     </div>
+    <% console.log(usuarios) %>
