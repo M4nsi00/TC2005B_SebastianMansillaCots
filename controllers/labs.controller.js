@@ -36,6 +36,7 @@ exports.get_lab13_new = ('/lab13/new',(req,res) =>{
 exports.post_lab13 = ('/lab13/new', (req,res) =>{
     console.log(req.body);
     const usuario = new Usuario(req.body.nombre, req.body.id_usuario, req.body.fecha);
+    console.log(usuario);
     usuario.save();
     res.setHeader('Set-Cookie', `ultimo_usuario=${usuario.nombre}; Secure`);
     res.redirect('/labs/lab13')
