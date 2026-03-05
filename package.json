@@ -1,0 +1,34 @@
+{
+  "name": "tc2005b_sebastianmansillacots",
+  "version": "1.0.0",
+  "description": "Laboratorios de la materia TC2005B",
+  "keywords": [
+    "NPM",
+    "Node",
+    "JavaScript",
+    "HTML",
+    "CSS"
+  ],
+  "homepage": "https://github.com/M4nsi00/TC2005B_SebastianMansillaCots#readme",
+  "bugs": {
+    "url": "https://github.com/M4nsi00/TC2005B_SebastianMansillaCots/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4nsi00/TC2005B_SebastianMansillaCots.git"
+  },
+  "license": "MIT",
+  "author": "Sebastian Mansilla Cots",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}
