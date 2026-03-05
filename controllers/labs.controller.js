@@ -28,9 +28,6 @@ exports.get_lab11 = ('/lab11',(req,res) =>{
 exports.get_lab12 = ('/lab12', (req,res) =>{
     res.render('preguntas_labs/lab12');
 });
-exports.get_lab13 = ('/lab13', (req,res) =>{
-    res.render('preguntas_labs/lab13', {usuarios: Usuario.fetchAll()});
-});
 exports.get_lab13_new = ('/lab13/new',(req,res) =>{
     res.render('new');
 });
@@ -41,4 +38,8 @@ exports.post_lab13 = ('/lab13/new', (req,res) =>{
     usuario.save();
     res.setHeader('Set-Cookie', `ultimo_usuario=${usuario.nombre}; Secure`);
     res.redirect('/labs/lab13')
+});
+exports.get_lab13 = ('/lab13', (req,res) =>{
+    console.log(req.get('Cookie'))
+    res.render('preguntas_labs/lab13', {usuarios: Usuario.fetchAll(),});
 });
