@@ -21,6 +21,11 @@ app.use(session({
 const rutasUsuarios = require('./routes/user.routes.js');
 app.use('/users', rutasUsuarios);
 
+app.use((req,res,next) =>{
+  res.locals.username = req.session.username || "";
+  next();
+});
+
 const rutasIndex = require('./routes/index_main.route');
 app.use('/', rutasIndex);
 

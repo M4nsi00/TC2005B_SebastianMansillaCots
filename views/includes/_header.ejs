@@ -23,6 +23,7 @@
         }
     </style>
 </head>
+<body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Laboratorios</a>
@@ -38,20 +39,18 @@
                         <a class="nav-link active btn btn-info" href="/labs">Preguntas Laboratorios</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active d-flex btn btn-light" href="/">Sign UP</a>
-                        <li class="nav-item">
-                        <% if (typeof(username) != "undefined") { %>
-                            <a class="nav-link active btn btn-danger" href="/users/logout"> Log OUT</a>
+                            <a class="nav-link active d-flex btn btn-light" href="/users/login">Sign UP</a>
+                        </li> <li class="nav-item">
+                            <% if (typeof(username) != "undefined") { %>
+                                <a class="nav-link active btn btn-danger" href="/users/logout"> Log OUT</a>
                             <% } else { %>
-                            <a class="nav-link active btn btn-success" href="/users/login"> Log IN</a>
-                        </li>
+                                <a class="nav-link active btn btn-success" href="/users/login"> Log IN</a>
                             <% } %>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
     <header class="py-5 border-bottom mb-5">
         <div class="container">
             <h1 class="display-2 fw-bold">Laboratorios</h1>

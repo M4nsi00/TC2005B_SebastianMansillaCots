@@ -29,9 +29,7 @@ exports.get_lab12 = ('/lab12', (req,res) =>{
     res.render('preguntas_labs/lab12');
 });
 exports.get_lab13_new = ('/lab13/new',(req,res) =>{
-    res.render('new' ,{
-        username: req.session.username || "",
-    });
+    res.render('new');
 });
 exports.post_lab13 = ('/lab13/new', (req,res) =>{
     console.log(req.body);
@@ -43,8 +41,5 @@ exports.post_lab13 = ('/lab13/new', (req,res) =>{
 });
 exports.get_lab13 = ('/lab13', (req,res) =>{
     console.log(req.get('Cookie'))
-    res.render('preguntas_labs/lab13', {
-        username: req.session.username || "",
-        usuarios: Usuario.fetchAll(),
-    });
+    res.render('preguntas_labs/lab13', {usuarios: Usuario.fetchAll(),});
 });
