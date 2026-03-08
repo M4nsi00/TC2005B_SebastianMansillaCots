@@ -1,3 +1,4 @@
+const { error } = require('console');
 const Usuario = require('../models/usuario.model');
 const paths = require('path');
 
@@ -42,4 +43,14 @@ exports.post_lab13 = ('/lab13/new', (req,res) =>{
 exports.get_lab13 = ('/lab13', (req,res) =>{
     console.log(req.get('Cookie'))
     res.render('preguntas_labs/lab13', {usuarios: Usuario.fetchAll(),});
+    Usuario.fetchAll().then(([rows, fieldData]) => {
+        return res.render('/labs/lab13', {
+            usernames: rows,
+        });
+    }).catch((errror) =>{
+        console.log(error);
+
+        throw error;
+    })
+    console.log(usuarios);
 });

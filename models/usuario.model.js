@@ -1,10 +1,4 @@
-const usuarios = [
-    {
-        nombre: "Sebastián",
-        id_usuario: "001",
-        fecha: "02-03-2026"
-    }
-];
+const db = require('../util/database');
 
 module.exports = class Usuario {
 
@@ -22,7 +16,7 @@ module.exports = class Usuario {
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
     static fetchAll() {
-        return usuarios;
+        return db.execute('SELECT * FROM users');
     }
 
 }
