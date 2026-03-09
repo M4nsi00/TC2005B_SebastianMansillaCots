@@ -3,15 +3,17 @@ const db = require('../util/database');
 module.exports = class Usuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(mi_nombre, mi_id_usuario, mi_fecha) {
-        this.nombre = mi_nombre;
-        this.id_usuario = mi_id_usuario;
-        this.fecha = mi_fecha;
+    constructor(mi_nombre, mi_username, mi_password, mi_fecha_registro) {
+        this.name = mi_nombre;
+        this.username = mi_username;
+        this.password = mi_password;
+        this.fecha_registro = mi_fecha_registro;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        usuarios.push(this);
+        return db.execute('INSERT INTO users(name, username, password, fecha_registro) VALUES(?, ?, ?, ?)',
+        [this.name, this.username, this.password, this.fecha_registro]);
     }
 
     //Este método servirá para devolver los objetos del almacenamiento persistente.
@@ -19,4 +21,15 @@ module.exports = class Usuario {
         return db.execute('SELECT * FROM users');
     }
 
+    static fetchOne(id){
+        return db.execute('SELECT * FROM users WHERE id = ?', [id]);
+    }
+
+    static fetch(id){
+        if(id){
+            return this.fetchOne(id);
+        } else{
+            return this.fetchAll();
+        }
+    }
 }

@@ -33,24 +33,28 @@ exports.get_lab13_new = ('/lab13/new',(req,res) =>{
     res.render('new');
 });
 exports.post_lab13 = ('/lab13/new', (req,res) =>{
-    console.log(req.body);
-    const usuario = new Usuario(req.body.nombre, req.body.id_usuario, req.body.fecha);
+    const usuario = new Usuario(req.body.name, req.body.username, req.body.password, req.body.fecha_registro);
     console.log(usuario);
-    usuario.save();
+    usuario.save().then(() => {
+        return res.redirect('/labs/lab13')
+    }).catch((error) =>{
+        console.log(error);
+        throw error;
+    });
     res.setHeader('Set-Cookie', `ultimo_usuario=${usuario.nombre}; Secure`);
-    res.redirect('/labs/lab13')
 });
 exports.get_lab13 = ('/lab13', (req,res) =>{
-    console.log(req.get('Cookie'))
-    res.render('preguntas_labs/lab13', {usuarios: Usuario.fetchAll(),});
-    Usuario.fetchAll().then(([rows, fieldData]) => {
-        return res.render('/labs/lab13', {
-            usernames: rows,
+    console.log(req.params.id);
+    Usuario.fetch(req.params.id).then(([rows, fieldData]) => {
+        return res.render('preguntas_labs/lab13', {
+            usuarios: rows,
         });
     }).catch((errror) =>{
         console.log(error);
-
         throw error;
-    })
-    console.log(usuarios);
+    });
+});
+
+exports.get_lab17 = ('/lab17', (req,res) =>{
+    res.render('preguntas_labs/lab17');
 });
