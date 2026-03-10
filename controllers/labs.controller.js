@@ -70,7 +70,7 @@ exports.get_lab13 = ('/lab13', (req,res) =>{
             csrfToken: req.csrfToken(),
             usuarios: rows,
         });
-    }).catch((errror) =>{
+    }).catch((error) =>{
         console.log(error);
         throw error;
     });
