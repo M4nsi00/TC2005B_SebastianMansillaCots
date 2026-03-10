@@ -16,7 +16,12 @@ app.use(session({
     secret: 'mi string secreto que debe ser un string aleatorio muy largo, no como éste', 
     resave: false, //La sesión no se guardará en cada petición, sino sólo se guardará si algo cambió 
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
-}));
+  }));
+
+const csrf = require('csurf');
+const csrfProtection = csrf();
+
+app.use(csrfProtection); 
 
 const rutasUsuarios = require('./routes/user.routes.js');
 app.use('/users', rutasUsuarios);
