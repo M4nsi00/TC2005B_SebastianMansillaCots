@@ -1,0 +1,30 @@
+<%- include('../includes/_header') %>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Laboratorio 18</h1>
+            <p class="lead text-info uppercase tracking-widest">Autentificación</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h3>1. ¿Qué otras formas de autentificación existen?</h3>
+            <p>Algunas de las otras formas incluyen:
+                    <ul>
+                        <li><b>Multifactor Authentication</b> Similar al caso base de usuario contraseña, pero se agrega un
+                        nuevo paso que es autentificar con un código generado en SMS o email, app de autenticación, chequeo biométrico,
+                        o una llave física. De forma que el acceso solo se da hasta que se cumpla este factor de autenticación extra.</li>
+                        <li><b>Token-Based Authentication</b> Este método se mueve principalmente de lado del cliente, en este el usuario
+                        ingresa sus datos e inicia sesión, el servidor las valida y genera un token, este token funciona como una cookie
+                        de forma que si el usuario quiere acceder a algo el servidor solo verifica este token.</li>
+                        <li><b>Biometric Authentication</b> Como su nombre lo índica usa biometría única como la huella dactilar o el rost
+                        ro para verificar un usuario, como son cosas físicas díficiles de replicar son un método bastante seguro.</li>
+                        <li><b>Single Sign-On Authentication (SSO)</b> Este método se usa cuando al ingresar a un sistema, el usuario despues
+                        planea acceder a otros sistemas, con este método este proceso se simplifica debido a que se genera un token que se pasa
+                        entre sistemas autenticando al usuario.</li>
+                        <li><b>Certificate-Based Authentication</b> Como indica el nombre es una autentificación basada por una certificación
+                        la cual contiene la llave pública que usara el usuario, el usuario presenta este certificado y el sistema entiende que
+                        el usuario es seguro y da acceso a la llave pública.</li>
+                    </ul>
+            </p>
+    </div>
+<%- include('../includes/_footer') %>   

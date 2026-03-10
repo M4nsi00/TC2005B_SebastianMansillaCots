@@ -2,7 +2,10 @@ const User = require('../models/usuario.model');
 const bcrypt = require('bcrypt');
 
 exports.get_login = (req, res, next) =>{
-    res.render('login',{error: req.session.error});
+    res.render('login',{
+        csrfToken: req.csrfToken(),
+        error: req.session.error,
+    });
 };
 exports.post_login = (req, res, next) =>{
     User.fetchOne(req.body.username).then(([rows, fieldData]) => {
@@ -40,7 +43,9 @@ exports.get_logout = (req, res, next) =>{
 };
 
 exports.get_signup = (req, res, next) =>{
-    res.render('signup');
+    res.render('signup',{
+        csrfToken: req.csrfToken()
+    });
 }
 
 exports.post_signup = (req,res,next) => {

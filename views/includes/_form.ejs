@@ -1,9 +1,11 @@
 <form action="/users/signup" method="POST">
+<input type="hidden" name="_csrf" value="<%= csrfToken %>" >
 <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 card shadow p-4">
             <h2 class="text-primary mb-4 text-center">Registrar Nuevo Usuario</h2>
             <form action="/users/signup" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                 <div class="mb-3">
                     <label class="form-label fw-bold">Nombre Completo</label>
                     <input name="name" type="text" class="form-control" placeholder="Ej. Sebastian Mansilla Cots" required>
