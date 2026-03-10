@@ -1,0 +1,33 @@
+<%- include('../includes/_header') %>
+    <header class="py-5 border-bottom mb-5">
+        <div class="container">
+            <h1 class="display-2 fw-bold">Laboratorio 17</h1>
+            <p class="lead text-info uppercase tracking-widest">Interacción con la base de datos</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h3>1. ¿Qué ventajas tiene escribir el código SQL únicamente en la capa del modelo?</h3>
+            <p>Como todo el modelo MVC, permite poder encapsular todo, en este caso permite que la logica de consulta se escriba una vez
+                y se pueda usar donde se necesite. 
+                <b>Tambien permite hacer una facil actualización al modelo o modificación, ya que, como todo esta en modulos es fácil saber que
+                    se tiene que cambiar sin afectar todo. Otra ventaja es que al usar este modelo permite dar más seguridad al sistema contra
+                    SQL injections.
+                </b>
+            </p>
+
+        <h3>2. ¿Qué es SQL injection y cómo se puede prevenir?</h3>
+            <p>En simples palabaras SQL injection es una acción que hace algun usuario al momento de interactuar con input de un sistema, de forma que inyecta algun comando
+                que la base de datos puede llegar a tomar y si no hay medidas preventibas puede poner en riesgo al sistema. Hay varias maneras de prevenir que esto suceda como por ejemplo:
+                <ul>
+                    <li>1. Parameterized Queries, en este método lo que se hace es primero compilar el comando SQL para luego insertar los datos como literales.</li>
+                    
+                    <li>2. Stored Procedures, en este caso es similar al primero, pero es un proceso guardado en la base de datos, la mayor desventaja de este es que funciona
+                    tan bien como funcione la seguridad de la base de datos. </li>
+                    
+                    <li>3. Allow-list parameter input validation, este caso se usa cuando se quieren hacer queries con tablas y un "?" no marca este parametro, por lo que se hace una validación
+                    con una tabla fija. </li>
+                </ul>
+            </p>
+    </div>
+<%- include('../includes/_footer') %>    

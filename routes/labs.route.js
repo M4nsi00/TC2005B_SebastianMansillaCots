@@ -15,5 +15,7 @@ router.get('/lab12',labsController.get_lab12);
 router.get('/lab13',labsController.get_lab13);
 router.get('/lab13/new',labsController.get_lab13_new);
 router.post('/lab13/new',labsController.post_lab13);
+router.get('/lab13/:id', labsController.get_lab13);
+router.get('/lab17',labsController.get_lab17);
 
 module.exports = router;

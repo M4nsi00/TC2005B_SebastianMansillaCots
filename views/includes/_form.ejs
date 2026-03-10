@@ -6,15 +6,19 @@
             <form action="/labs/lab13/new" method="POST">
                 <div class="mb-3">
                     <label class="form-label fw-bold">Nombre Completo</label>
-                    <input name="nombre" type="text" class="form-control" placeholder="Ej. Sebastian" required>
+                    <input name="name" type="text" class="form-control" placeholder="Ej. Sebastian Mansilla Cots" required>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label fw-bold">ID de Usuario</label>
-                <input name="id_usuario" type="number" class="form-control" placeholder="Ej. 12345" required>
+                                <div class="mb-3">
+                    <label class="form-label fw-bold">Username</label>
+                <input name="username" type="text" class="form-control" placeholder="Le_mansi" required>
+                </div>
+                                <div class="mb-3">
+                    <label class="form-label fw-bold">Password</label>
+                <input name="password" type="password" class="form-control" placeholder="********" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fw-bold">Fecha de Registro</label>
-                    <input name="fecha" type="date" class="form-control" required>
+                    <input name="fecha_registro" type="test" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Guardar en Base de Datos</button>
             </form>
