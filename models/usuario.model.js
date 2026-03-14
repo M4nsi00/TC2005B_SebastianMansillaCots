@@ -38,4 +38,14 @@ module.exports = class Usuario {
             return this.fetchAll();
         }
     }
+
+    static getPrivis(id){
+        console.log("Select a BD por los privis")
+        return db.execute(
+            `SELECT p.nombre FROM tiene t, Roles r, otorga o, privilegios p
+            WHERE idUsuario=? AND t.idRol=r.id AND r.id=o.idRol AND idPrivilegio=p.id`, 
+            [id]
+            );
+
+    }
 }
