@@ -63,12 +63,14 @@ exports.post_lab13 = ('/lab13/new', (req,res) =>{
     });
     res.setHeader('Set-Cookie', `ultimo_usuario=${usuario.nombre}; Secure`);
 });
+
 exports.get_lab13 = ('/lab13', (req,res) =>{
-    console.log(req.params.id);
+    console.log(`Req params: ${req.params.id}`);
     Usuario.fetch(req.params.id).then(([rows, fieldData]) => {
         return res.render('preguntas_labs/lab13', {
             csrfToken: req.csrfToken(),
             usuarios: rows,
+            roles: req.session.roles
         });
     }).catch((error) =>{
         console.log(error);

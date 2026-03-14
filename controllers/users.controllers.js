@@ -24,10 +24,7 @@ exports.post_login = (req, res, next) =>{
                 User.getPrivis(idUsuario).then(([privilegios,fieldData]) => {
                    //Privis Then code 
                     req.session.privilegios = privilegios;
-                    console.log(`Tus privilegios son: ${req.session.privilegios}`);
-                    return req.session.save((saveError) => {
-                        return res.redirect('/');
-                    })  
+                    console.log(`Tus privilegios son: ${req.session.privilegios}`);  
                     
                 }
 
@@ -36,6 +33,25 @@ exports.post_login = (req, res, next) =>{
                     console.log(errorPrivis);
                     next(errorPrivis);
                 })
+
+                //Obtener Roles
+                User.getRol(idUsuario).then(([roles,fieldData]) => {
+                   //Privis Then code 
+                    req.session.roles = roles;
+                    console.log(`Tus roles son: ${req.session.roles}`);
+                    return req.session.save((saveError) => {
+                        return res.redirect('/');
+                    })  
+                    
+                }
+
+                    ).catch((errorRoles) => {
+                    console.log("Error en los roles")
+                    console.log(errorRoles);
+                    next(errorRoles);
+                })
+
+
 
             }else{
                 req.session.error = 'Usuario y/o password no coinciden';
