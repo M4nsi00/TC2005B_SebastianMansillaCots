@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-03-2026 a las 17:44:46
+-- Tiempo de generación: 15-03-2026 a las 05:36:54
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -38,7 +38,8 @@ CREATE TABLE `otorga` (
 --
 
 INSERT INTO `otorga` (`IdRol`, `IdPrivilegio`, `CreatedAt`) VALUES
-(1, 1, '2026-03-13 00:08:06');
+(1, 1, '2026-03-13 00:08:06'),
+(2, 1, '2026-03-14 18:00:03');
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,8 @@ CREATE TABLE `Roles` (
 --
 
 INSERT INTO `Roles` (`id`, `nombre`, `CreatedAt`) VALUES
-(1, 'Godministrador', '2026-03-13 00:06:04');
+(1, 'Godministrador', '2026-03-13 00:06:04'),
+(2, 'cliente', '2026-03-14 17:34:06');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,8 @@ CREATE TABLE `tiene` (
 --
 
 INSERT INTO `tiene` (`IdUsuario`, `IdRol`, `CreatedAt`) VALUES
-(1, 1, '2026-03-13 00:07:17');
+(1, 1, '2026-03-13 00:07:17'),
+(6, 2, '2026-03-14 17:59:05');
 
 -- --------------------------------------------------------
 
@@ -117,7 +120,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`, `fecha_registro`, `created_at`) VALUES
-(1, 'charlydc16', '$2b$12$.CJEIHak8mQ3L9RusqqvZucip8OSU/ba2vuL7TU9E1NNqVcaX5m26', 'Carlos Delgado Contreras', '12 Marzo 2026', '2026-03-12 23:27:11');
+(1, 'charlydc16', '$2b$12$.CJEIHak8mQ3L9RusqqvZucip8OSU/ba2vuL7TU9E1NNqVcaX5m26', 'Carlos Delgado Contreras', '12 Marzo 2026', '2026-03-12 23:27:11'),
+(6, 'Sleepyless', '$2b$12$Ozh6ddQXQ8swePtqCPUuq.cFr1rrIw8lUL5irzyaWVnikvga10eda', 'Andrea Cantu Mayorga', '2026-03-14 11:59:05.090000', '2026-03-14 17:59:05');
 
 --
 -- Índices para tablas volcadas
@@ -169,13 +173,13 @@ ALTER TABLE `privilegios`
 -- AUTO_INCREMENT de la tabla `Roles`
 --
 ALTER TABLE `Roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
