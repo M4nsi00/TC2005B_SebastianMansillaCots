@@ -1,4 +1,14 @@
 <%- include('../includes/_header') %>
 <%- include('../includes/_body13') %>
-<%- include('../list') %>
+
+<%for(let rol of roles){ %>
+	<%console.log(`Rol: ${rol.nombre}`) %>
+	<%if(rol.nombre == "Godministrador"){%>
+		<%- include('../list') %>
+		<% break; %>
+			<%}%>
+	<%}%>
+
+
+
 <%- include('../includes/_footer') %>    

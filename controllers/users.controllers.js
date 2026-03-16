@@ -8,20 +8,51 @@ exports.get_login = (req, res, next) =>{
     });
 };
 exports.post_login = (req, res, next) =>{
-    User.fetchOne(req.body.username).then(([rows, fieldData]) => {
-    if (rows.length < 1){
+    User.fetchOne(req.body.username).then(([usuarios, fieldData]) => {
+    if (usuarios.length < 1){
             console.log("hola andamos no jalando")
         req.session.error = 'Usuario y/o password no coinciden';
         return res.redirect('/users/login');
     }else{
-        console.log(req.body.password, rows[0].password);
-        bcrypt.compare(req.body.password, rows[0].password).then((doMatch) =>{
+        console.log(req.body.password, usuarios[0].password);
+        bcrypt.compare(req.body.password, usuarios[0].password).then((doMatch) =>{
             if(doMatch){
+                //Obtener Privilegios y Roles con Model
                 req.session.isLoggedIn = true;
-                req.session.username = req.body.username;
-                return req.session.save((error) =>{
-                    return res.redirect('/');
-                });
+                const idUsuario= usuarios[0].id
+                console.log(`Este es mi ID:${idUsuario}`)
+                User.getPrivis(idUsuario).then(([privilegios,fieldData]) => {
+                   //Privis Then code 
+                    req.session.privilegios = privilegios;
+                    console.log(`Tus privilegios son: ${req.session.privilegios}`);  
+                    
+                }
+
+                    ).catch((errorPrivis) => {
+                    console.log("Error en los privis")
+                    console.log(errorPrivis);
+                    next(errorPrivis);
+                })
+
+                //Obtener Roles
+                User.getRol(idUsuario).then(([roles,fieldData]) => {
+                   //Privis Then code 
+                    req.session.roles = roles;
+                    console.log(`Tus roles son: ${req.session.roles}`);
+                    return req.session.save((saveError) => {
+                        return res.redirect('/');
+                    })  
+                    
+                }
+
+                    ).catch((errorRoles) => {
+                    console.log("Error en los roles")
+                    console.log(errorRoles);
+                    next(errorRoles);
+                })
+
+
+
             }else{
                 req.session.error = 'Usuario y/o password no coinciden';
                 return res.redirect('/users/login');
