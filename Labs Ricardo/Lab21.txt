@@ -1,0 +1,122 @@
+/*
+Materiales(Clave, Descripción, Costo, PorcentajeImpuesto)
+Proveedores(RFC, RazonSocial)
+Proyectos(Numero, Denominacion)
+Entregan(Clave, RFC, Numero, Fecha, Cantidad)
+*/
+
+/*
+La suma de las cantidades e importe total de todas las entregas realizadas durante el 97.
+*/
+SELECT SUM(cantidad) as "Total de unidades", SUM(cantidad * (precio + impuesto))
+FROM materiales M 
+INNER JOIN entregan E ON M.clave = E.clave
+WHERE E.fecha BETWEEN '01/01/97' AND '12/31/97';
+
+/*
+Para cada proveedor, obtener la razón social del proveedor, número de entregas e 
+importe total de las entregas realizadas.
+*/
+SELECT razonSocial, COUNT(e.rfc) as "Numero de entregas", SUM(cantidad * (precio + impuesto))
+FROM proveedores as PR
+INNER JOIN entregan E ON PR.rfc = E.rfc 
+INNER JOIN materiales M ON M.clave = E.clave
+GROUP BY PR.razonsocial
+
+/*
+Por cada material obtener la clave y descripción del material, la cantidad total 
+entregada, la mínima cantidad entregada, la máxima cantidad entregada, el importe
+ total de las entregas de aquellos materiales en los que la cantidad promedio entregada 
+ sea mayor a 400.
+*/
+SELECT M.clave, M.descripcion, SUM(cantidad) as "Total entregados", MIN(cantidad) as 
+"Cantidad Minima", MAX(cantidad) as "Cantidad Maxima", SUM(cantidad * (M.precio + M.impuesto)) 
+as "Importe total"
+FROM materiales M 
+JOIN entregan E ON M.clave = E.clave
+GROUP BY M.clave
+HAVING AVG(cantidad) > 400
+
+/*
+Para cada proveedor, indicar su razón social y mostrar la cantidad promedio de 
+cada material entregado, detallando la clave y descripción del material, excluyendo 
+aquellos proveedores para los que la cantidad promedio sea menor a 500.
+*/
+SELECT Pr.razonsocial, AVG(cantidad) as "Promedio de material", M.clave, m.descripcion
+FROM materiales M 
+JOIN entregan E ON M.clave = E.clave
+JOIN proveedores Pr
+GROUP BY M.clave, Pr.razonsocial
+HAVING AVG(cantidad) > 500
+
+/*
+Mostrar en una solo consulta los mismos datos que en la consulta anterior pero 
+para dos grupos de proveedores: aquellos para los que la cantidad promedio entregada 
+es menor a 370 y aquellos para los que la cantidad promedio entregada sea mayor a 450.
+*/
+SELECT Pr.razonsocial, AVG(cantidad) as "Promedio de material", M.clave, m.descripcion
+FROM materiales M 
+JOIN entregan E ON M.clave = E.clave
+JOIN proveedores Pr
+GROUP BY M.clave, Pr.razonsocial
+HAVING AVG(cantidad) > 370 or AVG(cantidad) < 450
+
+/*
+Clave y descripción de los materiales que nunca han sido entregados.
+*/
+SELECT M.clave, M.descripcion
+FROM materiales M
+WHERE M.clave NOT IN(SELECT E.clave 
+                    FROM entregan E)
+
+/*
+Razón social de los proveedores que han realizado entregas tanto al proyecto 'Vamos México' como al proyecto 'Querétaro Limpio'.
+*/
+SELECT razonSocial
+FROM proveedores Pr
+JOIN entregan E ON Pr.rfc = E.rfc
+JOIN proyectos P ON P.numero = E.numero
+WHERE P.denominacion = 'Vamos México' AND E.rfc IN (SELECT E.rfc
+                                                   FROM entregan E
+                                                   JOIN proyectos P ON P.numero = E.clave
+                                                   WHERE P.denominacion = 'Querétaro Limpio')
+
+/*
+Descripción de los materiales que nunca han sido entregados al proyecto 'CIT Yucatán'.
+*/
+SELECT M.descripcion
+FROM materiales M
+WHERE M.clave NOT IN (SELECT E.clave
+                     FROM entregan E
+                     JOIN proyectos P ON P.numero = E.numero
+                     WHERE P.denominacion = 'CIT Yucatán')
+
+/*
+Razón social y promedio de cantidad entregada de los proveedores cuyo promedio de cantidad entregada es mayor al promedio de la cantidad entregada por el proveedor con el RFC 'VAGO780901'.
+*/
+SELECT Pr.razonsocial, AVG(cantidad) as 'Promedio entregas'
+FROM proveedores Pr
+JOIN entregan E ON Pr.rfc = E.rfc
+GROUP BY Pr.razonsocial
+HAVING AVG(cantidad) > (SELECT AVG(cantidad)
+                       FROM proveedores Pr
+                       JOIN entregan E ON Pr.rfc = E.rfc
+                       WHERE Pr.rfc = 'AAAA800101'
+                       GROUP BY Pr.razonsocial)
+
+/*
+RFC, razón social de los proveedores que participaron en el proyecto 'Infonavit Durango' y cuyas cantidades totales entregadas en el 2000 fueron mayores a las cantidades totales entregadas en el 2001.
+*/
+
+SELECT PR.rfc, PR.razonsocial
+FROM proveedores PR
+JOIN entregan E ON PR.rfc = E.rfc
+JOIN proyectos P ON P.numero = E.numero
+WHERE E.fecha BETWEEN '01/01/00' AND '31/12/00' 
+AND P.denominacion = 'Infonavit Durango'
+GROUP BY PR.rfc, PR.razonsocial
+HAVING SUM(E.cantidad) > (SELECT SUM(E.cantidad)
+                         FROM entregan E
+                         JOIN proyectos P ON P.numero = E.numero
+                         WHERE E.fecha BETWEEN '01/01/01' AND '31/12/01' 
+                          AND P.denominacion = 'Infonavit Durango')
