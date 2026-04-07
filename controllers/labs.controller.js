@@ -89,3 +89,9 @@ exports.get_lab18 = ('/lab18', (req,res) =>{
         csrfToken: req.csrfToken(),
     });
 });
+
+exports.get_lab26 = ('/lab26', (req,res) =>{
+    res.render('preguntas_labs/lab26',{
+        csrfToken: req.csrfToken(),
+    });
+});

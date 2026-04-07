@@ -20,5 +20,6 @@ router.post('/lab13/new', isAuth, labsController.post_lab13);
 router.get('/lab13/:id',isAuth, labsController.get_lab13);
 router.get('/lab17',isAuth,labsController.get_lab17);
 router.get('/lab18',isAuth,labsController.get_lab18);
+router.get('/lab26',isAuth,labsController.get_lab26);
 
 module.exports = router;
