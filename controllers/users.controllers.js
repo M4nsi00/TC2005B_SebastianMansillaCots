@@ -80,7 +80,8 @@ exports.get_signup = (req, res, next) =>{
 }
 
 exports.post_signup = (req,res,next) => {
-    const usuario = new User(req.body.name, req.body.username, req.body.password, req.body.fecha_registro);
+    const imagen = req.file ? req.file.filename : '';
+    const usuario = new User(req.body.name, req.body.username, req.body.password, req.body.fecha_registro, imagen);
     console.log(usuario);
     usuario.save().then(() => {
         return res.redirect('/users/login');

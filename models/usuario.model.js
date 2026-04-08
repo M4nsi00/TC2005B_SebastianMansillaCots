@@ -4,19 +4,20 @@ const bcrypt = require('bcrypt');
 module.exports = class Usuario {
 
     //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(mi_nombre, mi_username, mi_password, mi_fecha_registro) {
+    constructor(mi_nombre, mi_username, mi_password, mi_fecha_registro, fotoPerfil) {
         this.name = mi_nombre;
         this.username = mi_username;
         this.password = mi_password;
         this.fecha_registro = new Date();
+        this.fotoPerfil = fotoPerfil;
     }
 
     //Este método servirá para guardar de manera persistente el nuevo objeto en la BD. 
     save() {
         return bcrypt.hash(this.password,12).then((password_cifrado) =>{
             //Inserción en tabla Usuarios 
-            return db.execute('INSERT INTO users(name, username, password, fecha_registro) VALUES(?, ?, ?, ?)',
-            [this.name, this.username, password_cifrado, this.fecha_registro]
+            return db.execute('INSERT INTO users(name, username, password, fecha_registro, fotoPerfil) VALUES(?, ?, ?, ?, ?)',
+            [this.name, this.username, password_cifrado, this.fecha_registro, this.fotoPerfil]
             ).then(([result]) => {
                 //Then de la inserción en tabla usuarios
                 //insertId es OBLOGATORIO, es sintaxis de MARIABD y los drivers

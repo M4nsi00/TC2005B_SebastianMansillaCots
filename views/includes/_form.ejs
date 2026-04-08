@@ -1,28 +1,39 @@
-<form action="/users/signup" method="POST">
 <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6 card shadow p-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 card shadow p-4">
             <h2 class="text-primary mb-4 text-center">Registrar Nuevo Usuario</h2>
-            <form action="/users/signup" method="POST">
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+            
+            <form action="/users/signup" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+                
                 <div class="mb-3">
                     <label class="form-label fw-bold">Nombre Completo</label>
                     <input name="name" type="text" class="form-control" placeholder="Ej. Sebastian Mansilla Cots" required>
                 </div>
-                                <div class="mb-3">
+                
+                <div class="mb-3">
                     <label class="form-label fw-bold">Username</label>
-                <input name="username" type="text" class="form-control" placeholder="Le_mansi" required>
+                    <input name="username" type="text" class="form-control" placeholder="Le_mansi" required>
                 </div>
-                                <div class="mb-3">
+                
+                <div class="mb-3">
                     <label class="form-label fw-bold">Password</label>
-                <input name="password" type="password" class="form-control" placeholder="********" required>
+                    <input name="password" type="password" class="form-control" placeholder="********" required>
                 </div>
+                
                 <div class="mb-3">
                     <label class="form-label fw-bold">Fecha de Registro</label>
-                    <input name="fecha_registro" type="test" class="form-control" required>
+                    <input name="fecha_registro" type="date" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Guardar en Base de Datos</button>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Foto de Perfil</label>
+                    <input name="fotoPerfil" type="file" class="form-control" accept="image/*">
+                </div>
+                
+                <button type="submit" class="btn btn-primary w-100 mt-2">Guardar en Base de Datos</button>
             </form>
-            </div>
+
         </div>
     </div>
+</div>

@@ -18,6 +18,22 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesión para una petición que no lo necesita
   }));
 
+const multer = require('multer');
+
+const fileStorage = multer.diskStorage({
+    destination: (request, file, callback) => {
+        //'uploads': Es el directorio del servidor donde se subirán los archivos 
+        callback(null, 'public/uploads');
+    },
+    filename: (request, file, callback) => {
+        //aquí configuramos el nombre que queremos que tenga el archivo en el servidor, 
+        //para que no haya problema si se suben 2 archivos con el mismo nombre concatenamos el timestamp
+        callback(null, new Date().getMilliseconds() + '-' + file.originalname);
+    },
+});
+
+app.use(multer({ storage: fileStorage}).single('fotoPerfil'))
+
 const csrf = require('csurf');
 const csrfProtection = csrf();
 
