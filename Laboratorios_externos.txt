@@ -2,3 +2,7 @@ Se trabajo el lab 23 en el proyecto de equipo, en la funcionalidad de visualizar
 de cliente, este es el commit en el que se implemento, donde se ve la creacion de los stored
 procedures en un archivo y sus llamadas en el modelo de royalty.model.js
 link: https://github.com/Citybanamex16/BlackWall-Maree/commit/9eb1da4454dcfd961d9301425b3a3ff5c1a8da3c
+
+Se trabajo el lab 28 en el proyecto de equipo, este es el commit en el que se implemento, se puede
+ver en el parcheBDsebas.txt los triggers que cree
+link: https://github.com/Citybanamex16/BlackWall-Maree/commit/3f2ada6fd5d6b58e9de3d43524974a26e8b71cbf
