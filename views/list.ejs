@@ -22,7 +22,9 @@
 
                         <p class="card-text mb-0"><strong>Usuario:</strong> <%= u.username %></p>
                     </div>
-
+                    <button class="btn btn-danger btn-eliminar mt-3" data-id="<%= u.id %>">
+                        Eliminar
+                    </button>
                 </div>
                 <div class="card-footer text-muted small">
                     Registrado el: <%= u.fecha_registro %>

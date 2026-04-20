@@ -1,6 +1,7 @@
 const { error } = require('console');
 const Usuario = require('../models/usuario.model');
 const paths = require('path');
+const db = require('../util/database');
 
 exports.get_lab1 = ('/lab1',(req,res) =>{
     res.render('preguntas_labs/lab1',{
@@ -95,3 +96,33 @@ exports.get_lab26 = ('/lab26', (req,res) =>{
         csrfToken: req.csrfToken(),
     });
 });
+
+exports.eliminarUsuarioCompleto = async (req, res) => {
+        const { id } = req.params;
+        const connection = await db.getConnection();
+
+        try {
+            await connection.beginTransaction();
+
+            await connection.query('DELETE FROM tiene WHERE IDUsuario = ?', [id]);
+
+            const [result] = await connection.query('DELETE FROM users WHERE id = ?', [id]);
+
+            if (result.affectedRows === 0) {
+                throw new Error('Usuario no encontrado');
+            }
+
+            await connection.commit();
+            
+            res.status(200).json({ success: true, message: 'Usuario y roles eliminados' });
+
+        } catch (error) {
+            await connection.rollback();
+            
+            console.error("Fallo en la eliminación:", error);
+            res.status(500).json({ success: false, message: 'No se pudo completar la operación' });
+
+        } finally { 
+            connection.release();
+        }
+    };
